@@ -404,6 +404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 390536555}
   - component: {fileID: 390536554}
+  - component: {fileID: 390536556}
   m_Layer: 0
   m_Name: CosmicViewManager
   m_TagString: Untagged
@@ -442,6 +443,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &390536556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390536553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ebcda1414878ad41ae7439a1079a1b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cosmicSkyBox: {fileID: 2100000, guid: 369b9ebe3a62b904dbc19bd332b44086, type: 2}
 --- !u!1 &681397808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,9 +1359,9 @@ SceneRoots:
   - {fileID: 681397813}
   - {fileID: 1239941629}
   - {fileID: 698292552}
-  - {fileID: 390536555}
   - {fileID: 883199463}
   - {fileID: 2103270059}
   - {fileID: 4836706}
   - {fileID: 5926439858286952400}
+  - {fileID: 390536555}
   - {fileID: 135554092}
