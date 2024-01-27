@@ -453,7 +453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 70c91b32d678df84ab52c81d701a0805, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 70c91b32d678df84ab52c81d701a0805, type: 3}
       propertyPath: m_LocalPosition.z
@@ -720,6 +720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d401bdddf0b114b4dab69907be326cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  SE: {fileID: 0}
 --- !u!114 &637796295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -841,6 +843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BarSpeed: 50
   Slider: {fileID: 680547507}
+  nextStateTime: 5
   FlyingDistance: 0
 --- !u!114 &680547507
 MonoBehaviour:
@@ -1288,6 +1291,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 20
+  audioSource: {fileID: 0}
+  SE: {fileID: 0}
 --- !u!224 &944114082 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8805808861511054402, guid: 26f973efc0730fe4dbc043a03261d714, type: 3}
@@ -2097,7 +2102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 70c91b32d678df84ab52c81d701a0805, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 70c91b32d678df84ab52c81d701a0805, type: 3}
       propertyPath: m_LocalPosition.z
