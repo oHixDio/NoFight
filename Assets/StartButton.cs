@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RestartButton : MonoBehaviour
+public class StartButton : MonoBehaviour
 {
     private IGameState gameState = null;
 
@@ -13,15 +13,15 @@ public class RestartButton : MonoBehaviour
     private void Awake()
     {
         gameState = GameManager.instace.gameObject.GetComponent<IGameState>();
-
-        //audioSource = GetComponent<AudioSource>();
+        
     }
 
-    public void GameRestert()
+    public void GameStart()
     {
         //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚ÉSE‚ğÄ¶
         audioSource.PlayOneShot(SE);
 
-        gameState.ChangeGameState(EGameState.RESTART);
+        if (gameState == null) { return; }
+        gameState.ChangeGameState(EGameState.START);
     }
 }
