@@ -9,6 +9,7 @@ public enum EGameState
     SLIDER,
     FLY,
     CUTIN,
+    COSMIC,
     RESULT,
     END,
     RESTART,

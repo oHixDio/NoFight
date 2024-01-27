@@ -66,6 +66,9 @@ public class GameManager : MonoBehaviour, IGameState
             case EGameState.CUTIN:
                 CutInMode();
                 break;
+            case EGameState.COSMIC:
+                Debug.Log("Cosmic");
+                break;
             case EGameState.RESULT:
                 canvas.SetActiveCanvas(true, state);
                 break;

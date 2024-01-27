@@ -7,12 +7,14 @@ public class CanvasManager : MonoBehaviour, ICanvas
     [SerializeField] private Canvas titleCanvas;
     [SerializeField] private Canvas resultCanvas;
     [SerializeField] private Canvas sliderCanvas;
+    [SerializeField] private Canvas fadeCanvas;
 
     public void SetActiveCanvas(bool active, EGameState curState)
     {
         switch (curState)
         {
             case EGameState.TITLE:
+                fadeCanvas.GetComponentInChildren<Fade>().FadeIn();
                 titleCanvas.gameObject.SetActive(active);
                 break;
             case EGameState.START:
@@ -31,4 +33,6 @@ public class CanvasManager : MonoBehaviour, ICanvas
                 break;
         }
     }
+
+   
 }
