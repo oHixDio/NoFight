@@ -3,28 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Rigidbody))]
 public class addforce1 : MonoBehaviour
 {
 
-    public GameObject Human;
-    void FixedUpdate()
-    {
-        Transform transform = this.GetComponent<Transform>(); //Transform‚ğæ“¾
-        Rigidbody rb = this.GetComponent<Rigidbody>();  // rigidbody‚ğæ“¾
-        Vector3 force = new Vector3(-1500f, 30f, 1500f);    // —Í‚ğİ’è
-        rb.AddForce(force, ForceMode.Force);
+    [SerializeField]
+    private float m_power = 0.0f;//—Í‚Ì‘å‚«‚³
+    [SerializeField]
+    private Vector3 m_powerDir = Vector3.zero;//—Í‚Ì•ûŒü
+    [SerializeField]
+    private Vector3 m_offset = Vector3.zero;//‰ñ“]
 
-        if (Human.transform.position.z <= 500)
-        {
-            Debug.Log("¬Œ÷");
-        }
+    Rigidbody rb;  // rigidbody‚ğæ“¾
+
+    public GameObject Human;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
     }
 
-    void calculation()
+    void FixedUpdate()
     {
-        if(Human.transform.position.z == 500 )
-        {
-            Debug.Log("¬Œ÷");
-        }
+        rb.AddForceAtPosition(m_powerDir.normalized * m_power, transform.position + m_offset);
+    }
+
+    private void OnBecameInvisible()
+    {
+
+        Debug.Log("‰æ–ÊŠO");
     }
 }

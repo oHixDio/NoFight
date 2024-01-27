@@ -25,6 +25,7 @@ public class StopHuman : MonoBehaviour
             {
                 transform.position = Vector3.zero;
                 fallFlag = false;
+                gameState.ChangeGameState(EGameState.SLIDER);
             }
         }
     }
