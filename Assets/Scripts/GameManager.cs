@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour, IGameState
     [SerializeField] private GameObject canvasManager = null;
     private ICanvas canvas = null;
 
+    [SerializeField] private GameObject mainCamera = null;
+
     void Awake()
     {
         // 自身を取得
@@ -62,8 +64,7 @@ public class GameManager : MonoBehaviour, IGameState
             case EGameState.FLY:
                 break;
             case EGameState.CUTIN:
-                Debug.Log(state);
-
+                CutInMode();
                 break;
             case EGameState.RESULT:
                 canvas.SetActiveCanvas(true, state);
@@ -117,5 +118,10 @@ public class GameManager : MonoBehaviour, IGameState
 #else
       Application.Quit();
 #endif
+    }
+
+    public void CutInMode()
+    {
+        mainCamera.gameObject.SetActive(false);
     }
 }
