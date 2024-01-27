@@ -58,12 +58,13 @@ public class GameManager : MonoBehaviour, IGameState
                 break;
             case EGameState.SLIDER:
                 canvas.SetActiveCanvas(true, state);
+                Debug.Log(state);
+
                 break;
             case EGameState.FLY:
-                canvas.SetActiveCanvas(true, state);
+                Debug.Log(state);
                 break;
             case EGameState.CUTIN:
-                canvas.SetActiveCanvas(true, state);
                 break;
             case EGameState.RESULT:
                 canvas.SetActiveCanvas(true, state);
@@ -85,6 +86,15 @@ public class GameManager : MonoBehaviour, IGameState
                 canvas.SetActiveCanvas(false, state);
                 break;
             case EGameState.START:
+                break;
+            case EGameState.SLIDER:
+                canvas.SetActiveCanvas(false, state);
+                break;
+            case EGameState.FLY:
+               
+                break;
+            case EGameState.CUTIN:
+               
                 break;
             case EGameState.RESULT:
                 canvas.SetActiveCanvas(false, state);
