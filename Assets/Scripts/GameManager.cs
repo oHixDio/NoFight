@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour, IGameState
     [SerializeField] private GameObject canvasManager = null;
     private ICanvas canvas = null;
 
+    [SerializeField] private GameObject mainCam = null;
+
     void Awake()
     {
         // 自身を取得
@@ -57,12 +59,12 @@ public class GameManager : MonoBehaviour, IGameState
                 Debug.Log("Start");
                 break;
             case EGameState.SLIDER:
+                canvas.SetActiveCanvas(true, state);
                 break;
             case EGameState.FLY:
-
                 break;
             case EGameState.CUTIN:
-
+                CutInMode();
                 break;
             case EGameState.RESULT:
                 canvas.SetActiveCanvas(true, state);
@@ -84,6 +86,15 @@ public class GameManager : MonoBehaviour, IGameState
                 canvas.SetActiveCanvas(false, state);
                 break;
             case EGameState.START:
+                break;
+            case EGameState.SLIDER:
+                canvas.SetActiveCanvas(false, state);
+                break;
+            case EGameState.FLY:
+               
+                break;
+            case EGameState.CUTIN:
+               
                 break;
             case EGameState.RESULT:
                 canvas.SetActiveCanvas(false, state);
@@ -107,5 +118,10 @@ public class GameManager : MonoBehaviour, IGameState
 #else
       Application.Quit();
 #endif
+    }
+
+    public void CutInMode()
+    {
+        mainCam.SetActive(false);
     }
 }

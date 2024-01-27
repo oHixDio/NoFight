@@ -5,79 +5,70 @@ using UnityEngine.UI;
 
 public class Slidermove : MonoBehaviour
 {
-    [SerializeField] float BarSpeed;
+    private IGameState gameState = null;
+    [SerializeField] float BarSpeed = 1f;
     [SerializeField] Slider Slider;
+    [SerializeField] private float nextStateTime = 5f;
+
     public float FlyingDistance;
     private bool isClicked;
-    private bool maxValue;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameState = GameManager.instace.GetComponent<IGameState>();
         Slider.value = 0;
-        maxValue = false;
         isClicked = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && isClicked == false)
-        {
-            Debug.Log("stop");
-            isClicked = true;
-        }
-        else if (Input.GetMouseButtonDown(0) && isClicked == true)
-        {
-            Debug.Log("start");
-            isClicked = false;
-        }
+        //一度クリックしたらここの処理は使わないからリターンする
         if (isClicked)
         {
-             if (Slider.value >= 4.5 && Slider.value <= 5.5)
-                {
-                    Debug.Log("Great!!");
-                FlyingDistance = 10;
-                }
-
-        else if (Slider.value >= 2.0 && Slider.value <= 4.5 || Slider.value >= 5.5 && Slider.value <= 8.0)
-                {
-                    Debug.Log("Good");
-                    FlyingDistance = 5;
-                }
-
-        else if(Slider.value >= 0.0 && Slider.value <= 2.0 || Slider.value >= 8.0 && Slider.value <= 10.0)
-            
-                {
-                    Debug.Log("Bad!!");
-                    FlyingDistance = 1;
-                };
-                
-                
-
             return;
         }
-
-       
-
-        if (Slider.value == 10)
+        if (Input.GetMouseButtonDown(0) && isClicked == false)
         {
-            maxValue = true;
-        }
-        if (Slider.value == 0)
-        {
-            maxValue = false;
+            SliderStop();
         }
 
+        //ここでスライダーの数値を変更しています
+        if (Slider.value == 10 || Slider.value ==0)
+        {
+            BarSpeed *= -1;  
+        }
         //ここからバーの速さ
-        if (maxValue == true)
+        Slider.value += BarSpeed * Time.deltaTime;
+    }
+    private void SliderStop()
+    {
+        //ステートの変更をしています
+        isClicked = true;
+        Invoke("callState", nextStateTime);
+
+
+        //リザルトの値をここで決めています
+        if (Slider.value >= 4.5 && Slider.value <= 5.5)
         {
-            Slider.value -= BarSpeed * Time.deltaTime;
+            FlyingDistance = 10;
         }
 
-        if (maxValue == false)
+        else if (Slider.value >= 2.0 && Slider.value <= 4.5 || Slider.value >= 5.5 && Slider.value <= 8.0)
         {
-            Slider.value += BarSpeed * Time.deltaTime;
+            FlyingDistance = 5;
         }
+
+        else if (Slider.value >= 0.0 && Slider.value <= 2.0 || Slider.value >= 8.0 && Slider.value <= 10.0)
+
+        {
+            FlyingDistance = 1;
+        };
+
+    }
+    private void callState()
+    {
+        gameState.ChangeGameState(EGameState.FLY);
     }
 }
