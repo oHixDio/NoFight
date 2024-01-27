@@ -1,21 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IGameState
 {
-    private EGameState state;
+    // シングルトン変数
+    public static GameManager instace;
+    private EGameState state = EGameState.TITLE;
+    [SerializeField] private GameObject canvasManager = null;
+    private ICanvas canvas = null;
 
+    void Awake()
+    {
+        // 自身を取得
+        if (instace == null)
+        {
+            instace = this;
+        }
+        // FPS 60に設定
+        Application.targetFrameRate = 60;
+        // 初期ステートをTitleに設定
+        state = EGameState.TITLE;
+        canvas = canvasManager.gameObject.GetComponent<ICanvas>();
+    }
 
-    // Start is called before the first frame update
     void Start()
     {
-
+        EntryGameState(state);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ChangeGameState(EGameState.RESULT);
+        }
     }
 
     public void ChangeGameState(EGameState newState)
@@ -30,13 +51,19 @@ public class GameManager : MonoBehaviour, IGameState
         switch (curState)
         {
             case EGameState.TITLE:
+                canvas.SetActiveCanvas(true, state);
                 break;
             case EGameState.START:
+                Debug.Log("Start");
                 break;
             case EGameState.RESULT:
+                canvas.SetActiveCanvas(true, state);
                 break;
             case EGameState.END:
                 GameQuit();
+                break;
+            case EGameState.RESTART:
+                SceneManager.LoadScene(0);
                 break;
         }
     }
@@ -46,10 +73,12 @@ public class GameManager : MonoBehaviour, IGameState
         switch (curState)
         {
             case EGameState.TITLE:
+                canvas.SetActiveCanvas(false, state);
                 break;
             case EGameState.START:
                 break;
             case EGameState.RESULT:
+                canvas.SetActiveCanvas(false, state);
                 break;
             case EGameState.END:
                 break;

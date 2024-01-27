@@ -5,13 +5,12 @@ using UnityEngine.UI;
 
 public class EndButton : MonoBehaviour
 {
-    [SerializeField] private GameObject GameStateObj = null;
     private IGameState gameState = null;
     [SerializeField] private Text btnTextObj = null;
     [SerializeField] private string btnText = "‚â‚ß‚é";
     private void Awake()
     {
-        gameState = GameStateObj.gameObject.GetComponent<IGameState>();
+        gameState = GameManager.instace.gameObject.GetComponent<IGameState>();
     }
 
     private void Start()

@@ -8,4 +8,5 @@ public enum EGameState
     START,
     RESULT,
     END,
+    RESTART,
 }
