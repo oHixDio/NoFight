@@ -19,7 +19,7 @@ public class StartButton : MonoBehaviour
     public void GameStart()
     {
         //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚ÉSE‚ğÄ¶
-        audioSource.PlayOneShot(SE);
+       //  audioSource.PlayOneShot(SE);
 
         if (gameState == null) { return; }
         gameState.ChangeGameState(EGameState.START);
