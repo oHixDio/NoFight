@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class Slidermove : MonoBehaviour
 {
+    [SerializeField] float BarSpeed;
     [SerializeField] Slider Slider;
+    public float FlyingDistance;
     private bool isClicked;
     private bool maxValue;
 
@@ -32,22 +34,24 @@ public class Slidermove : MonoBehaviour
         }
         if (isClicked)
         {
-            if (Slider.value >= 4.5 && Slider.value <= 5.5)
-            {
-                Debug.Log("Great!!");
-            }
+             if (Slider.value >= 4.5 && Slider.value <= 5.5)
+                {
+                    Debug.Log("Great!!");
+                FlyingDistance = 10;
+                }
 
         else if (Slider.value >= 2.0 && Slider.value <= 4.5 || Slider.value >= 5.5 && Slider.value <= 8.0)
-
-            {
-              Debug.Log("Good");
-             }
+                {
+                    Debug.Log("Good");
+                    FlyingDistance = 5;
+                }
 
         else if(Slider.value >= 0.0 && Slider.value <= 2.0 || Slider.value >= 8.0 && Slider.value <= 10.0)
             
                 {
-                Debug.Log("Bad!!");
-            };
+                    Debug.Log("Bad!!");
+                    FlyingDistance = 1;
+                };
                 
                 
 
@@ -68,12 +72,12 @@ public class Slidermove : MonoBehaviour
         //‚±‚±‚©‚çƒo[‚Ì‘¬‚³
         if (maxValue == true)
         {
-            Slider.value -= 0.2f;
+            Slider.value -= BarSpeed * Time.deltaTime;
         }
 
         if (maxValue == false)
         {
-            Slider.value += 0.2f;
+            Slider.value += BarSpeed * Time.deltaTime;
         }
     }
 }
