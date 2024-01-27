@@ -8,13 +8,12 @@ public class BlowingLevel : ScriptableObject
     //スライダーを止めた時に決まる吹き飛ばすレベル
     public enum Level
     {
-        High = 0,
-        Medium,
-        Low,
-        No
+        Great = 0,
+        Good,
     }
     public Level level;
 
     //フラグ
+    public bool isCosmicShift = false;
     public bool CosmicFall_flag = false;
 }

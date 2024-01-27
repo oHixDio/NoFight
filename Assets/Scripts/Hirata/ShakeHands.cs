@@ -17,15 +17,20 @@ public class ShakeHands : MonoBehaviour
     //エフェクトを内包するオブジェクト
     [SerializeField] private GameObject backgroundEffects;
 
+    //インスペクター上でSEを設定
+    public AudioSource audioSource;
+    public AudioClip SE;
+
     private void Start()
     {
+        //フラグの初期化
         BlowingLevel.CosmicFall_flag = false;
     }
 
     void Update()
     {
         //スライダーが最大
-        if (BlowingLevel.level == BlowingLevel.Level.High && BlowingLevel.CosmicFall_flag)
+        if (BlowingLevel.level == BlowingLevel.Level.Great && BlowingLevel.CosmicFall_flag)
         {
             //カメラ切り替え
             mainCamera.gameObject.SetActive(false);
@@ -33,6 +38,11 @@ public class ShakeHands : MonoBehaviour
 
             //エフェクトの発生
             backgroundEffects.gameObject.SetActive(true);
+            //SEを再生
+            audioSource.PlayOneShot(SE);
+
+            //数秒後次の場面に切り替える
+
         }
     }
 }

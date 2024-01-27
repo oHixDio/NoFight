@@ -227,3 +227,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btnTextObj: {fileID: 7516475458950590429}
   btnText: "\u3084\u3081\u308B"
+  audioSource: {fileID: 0}
+  SE: {fileID: 8300000, guid: 696dd877309cc634bb4a23ba02571220, type: 3}
