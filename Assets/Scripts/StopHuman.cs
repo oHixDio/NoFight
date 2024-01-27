@@ -9,6 +9,12 @@ public class StopHuman : MonoBehaviour
     private IGameState gameState;
 
     private bool fallFlag = true;
+
+    //インスペクター上でSEを設定
+    public AudioSource audioSource;
+    public AudioClip SE;
+    private bool oneSound = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +27,17 @@ public class StopHuman : MonoBehaviour
         if (gameState.GetCurrentGameState() == EGameState.START && fallFlag)
         {
             transform.Translate(0, -fallSpeed * Time.deltaTime, 0);
+
+            //男が着地した
             if (transform.position.y < 0)
             {
+                if (!oneSound)
+                {
+                    oneSound = true;
+                    //ボタンを押したときにSEを再生
+                    audioSource.PlayOneShot(SE);
+                }
+
                 transform.position = Vector3.zero;
                 fallFlag = false;
                 gameState.ChangeGameState(EGameState.SLIDER);

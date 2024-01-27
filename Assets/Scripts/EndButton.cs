@@ -8,6 +8,11 @@ public class EndButton : MonoBehaviour
     private IGameState gameState = null;
     [SerializeField] private Text btnTextObj = null;
     [SerializeField] private string btnText = "やめる";
+
+    //インスペクター上でSEを設定
+    public AudioSource audioSource;
+    public AudioClip SE;
+
     private void Awake()
     {
         gameState = GameManager.instace.gameObject.GetComponent<IGameState>();
@@ -21,6 +26,9 @@ public class EndButton : MonoBehaviour
 
     public void GameEnd()
     {
+        //ボタンを押したときにSEを再生
+        audioSource.PlayOneShot(SE);
+
         if (gameState == null) { return; }
         gameState.ChangeGameState(EGameState.END);
         Debug.Log(gameState.GetCurrentGameState());
