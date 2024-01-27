@@ -56,6 +56,15 @@ public class GameManager : MonoBehaviour, IGameState
             case EGameState.START:
                 Debug.Log("Start");
                 break;
+            case EGameState.SLIDER:
+                canvas.SetActiveCanvas(true, state);
+                break;
+            case EGameState.FLY:
+                canvas.SetActiveCanvas(true, state);
+                break;
+            case EGameState.CUTIN:
+                canvas.SetActiveCanvas(true, state);
+                break;
             case EGameState.RESULT:
                 canvas.SetActiveCanvas(true, state);
                 break;
