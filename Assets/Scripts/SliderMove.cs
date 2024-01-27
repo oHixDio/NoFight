@@ -39,6 +39,24 @@ public class Slidermove : MonoBehaviour
             return;
         }
 
+        if (isClicked)
+        {
+            if (Slider.value >= 2.0 && Slider.value <= 4.5|| Slider.value >= 5.5 && Slider.value <= 8.0)
+            {
+                Debug.Log("Good");
+            }
+            return;
+        }
+
+        if (isClicked)
+        {
+            if (Slider.value >= 0.0 && Slider.value <= 2.0||Slider.value >= 8.0 && Slider.value <= 10.0)
+            {
+                Debug.Log("Bad!!");
+            }
+            return;
+        }
+
         if (Slider.value == 10)
         {
             maxValue = true;
