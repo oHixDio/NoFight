@@ -16,6 +16,10 @@ public class RotateAroundEarth : MonoBehaviour
 
     //回転の停止する地点
     private float stopRotatePos_Max = -5.4f;
+    private float stopRotatePos_Medium = -2f;
+
+    //爆発のパーティクルが設定されたオブジェクト
+    [SerializeField] private GameObject explosion;
 
     //吹き飛びレベルのスクリプタブルオブジェクト
     public BlowingLevel BlowingLevel;
@@ -23,18 +27,53 @@ public class RotateAroundEarth : MonoBehaviour
     private void Update()
     {
         
-        //中心点centerの周りを、軸axisで、period周期で円運動
-        transform.RotateAround(
-            center,
-            axis,
-            360 / _period * Time.deltaTime
-        );
+        
 
+        //スライダーが強かつ一定の地点まで回転すると動作
+        if (transform.position.y < stopRotatePos_Medium && BlowingLevel.level == BlowingLevel.Level.Medium)
+        {
+            //宇宙でのイベントが起きていない時発生させる
+            if (!BlowingLevel.CosmicFall_flag)
+            {
+                
+
+                BlowingLevel.CosmicFall_flag = true;
+            }
+        }
         //スライダーが最大かつ一定の地点まで回転すると動作
-        if (transform.position.y < stopRotatePos_Max && BlowingLevel.level == BlowingLevel.Level.High)
+        else if (transform.position.y < stopRotatePos_Max && BlowingLevel.level == BlowingLevel.Level.High)
         {
             //フラグを変えてカメラを切り替える
             if (!BlowingLevel.CosmicFall_flag) BlowingLevel.CosmicFall_flag = true;
+        }
+        else
+        {
+            //中心点centerの周りを、軸axisで、period周期で円運動
+            transform.RotateAround(
+                center,
+                axis,
+                360 / _period * Time.deltaTime
+            );
+        }
+
+        //爆発するか確認
+        explosionCosmic();
+    }
+
+    //一度だけ爆発を発生させる
+    public void explosionCosmic()
+    {
+        if (BlowingLevel.CosmicFall_flag)
+        {
+            bool isexplosion = false;
+
+            if (!isexplosion)
+            {
+                //爆発のオブジェクトを生成
+                Instantiate(explosion, transform.position, Quaternion.identity);
+
+                isexplosion = true;
+            }
         }
     }
 }

@@ -477,6 +477,7 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   axis: {x: 0, y: 0, z: 1}
   _period: 6
+  explosion: {fileID: 91877249659161162, guid: 74352caa94a1e9e4694a742937bcf494, type: 3}
   BlowingLevel: {fileID: 11400000, guid: 101795bee9e9a7c43b984ac516cc885f, type: 2}
 --- !u!135 &681397810
 SphereCollider:
@@ -855,7 +856,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: CosmicSceneMainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -948,7 +949,7 @@ GameObject:
   - component: {fileID: 1164776312}
   - component: {fileID: 1164776311}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Earth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1075,6 +1076,7 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   axis: {x: 0, y: 0, z: 1}
   _period: -6
+  explosion: {fileID: 91877249659161162, guid: 74352caa94a1e9e4694a742937bcf494, type: 3}
   BlowingLevel: {fileID: 11400000, guid: 101795bee9e9a7c43b984ac516cc885f, type: 2}
 --- !u!135 &1239941626
 SphereCollider:
@@ -1279,6 +1281,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: backgroundEffects
       objectReference: {fileID: 0}
+    - target: {fileID: 1051373879553960726, guid: 6263642157fd8504c95a9b54803e5c07, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367763712454792486, guid: 6263642157fd8504c95a9b54803e5c07, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4424323119912596588, guid: 6263642157fd8504c95a9b54803e5c07, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1328,6 +1338,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1295652455}
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 1164776314}
@@ -1336,8 +1347,7 @@ SceneRoots:
   - {fileID: 698292552}
   - {fileID: 390536555}
   - {fileID: 883199463}
-  - {fileID: 135554092}
-  - {fileID: 1295652455}
-  - {fileID: 5926439858286952400}
   - {fileID: 2103270059}
   - {fileID: 4836706}
+  - {fileID: 5926439858286952400}
+  - {fileID: 135554092}

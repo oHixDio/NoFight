@@ -24,7 +24,7 @@ public class ShakeHands : MonoBehaviour
 
     void Update()
     {
-        //最高到達点
+        //スライダーが最大
         if (BlowingLevel.level == BlowingLevel.Level.High && BlowingLevel.CosmicFall_flag)
         {
             //カメラ切り替え
