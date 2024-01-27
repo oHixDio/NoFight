@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4cdc5d09351a944acbabd54c64515d, type: 3}
   m_Name: BlowingLevel
   m_EditorClassIdentifier: 
-  level: 1
-  CosmicFall_flag: 1
+  level: 0
+  isCosmicShift: 0
+  CosmicFall_flag: 0
