@@ -6,6 +6,9 @@ public enum EGameState
 {
     TITLE = 0,
     START,
+    SLIDER,
+    FLY,
+    CUTIN,
     RESULT,
     END,
     RESTART,

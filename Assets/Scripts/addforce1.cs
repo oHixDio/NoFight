@@ -8,28 +8,28 @@ public class addforce1 : MonoBehaviour
 {
 
     [SerializeField]
-    float speed = 1.0f;
+    private float m_power = 0.0f;//—Í‚Ì‘å‚«‚³
     [SerializeField]
-    private float m_power = 0.0f;
+    private Vector3 m_powerDir = Vector3.zero;//—Í‚Ì•ûŒü
     [SerializeField]
-    private Vector3 m_powerDir = Vector3.zero;
-    [SerializeField]
-    private Vector3 m_offset = Vector3.zero;
+    private Vector3 m_offset = Vector3.zero;//‰ñ“]
+
+    Rigidbody rb;  // rigidbody‚ğæ“¾
 
     public GameObject Human;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void FixedUpdate()
     {
-        Transform transform = this.GetComponent<Transform>(); //Transform‚ğæ“¾
-        Rigidbody rb = this.GetComponent<Rigidbody>();  // rigidbody‚ğæ“¾
         rb.AddForceAtPosition(m_powerDir.normalized * m_power, transform.position + m_offset);
     }
 
-    void calculation()
+    private void OnBecameInvisible()
     {
-        if(Human.transform.position.z == 500 )
-        {
-            Debug.Log("¬Œ÷");
-        }
+
+        Debug.Log("‰æ–ÊŠO");
     }
 }
