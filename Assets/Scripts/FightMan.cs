@@ -20,6 +20,7 @@ public class FightMan : MonoBehaviour
 
     void Start()
     {
+        GetComponentInChildren<Camera>().enabled = false;
         gameState = GameManager.instace.GetComponent<IGameState>();
     }
 
@@ -42,10 +43,8 @@ public class FightMan : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        if (gameState.GetCurrentGameState() != EGameState.CUTIN)
-        {
-            gameState.ChangeGameState(EGameState.CUTIN);
-        }
-        
+        Debug.Log("Hi");
+        gameState.ChangeGameState(EGameState.CUTIN);
+        GetComponentInChildren<Camera>().enabled = true;
     }
 }

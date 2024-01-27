@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour, IGameState
     [SerializeField] private GameObject canvasManager = null;
     private ICanvas canvas = null;
 
-    [SerializeField] private GameObject mainCamera = null;
+    [SerializeField] private GameObject mainCam = null;
 
     void Awake()
     {
@@ -122,6 +122,6 @@ public class GameManager : MonoBehaviour, IGameState
 
     public void CutInMode()
     {
-        mainCamera.gameObject.SetActive(false);
+        mainCam.SetActive(false);
     }
 }
