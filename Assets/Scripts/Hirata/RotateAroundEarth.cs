@@ -20,6 +20,7 @@ public class RotateAroundEarth : MonoBehaviour
 
     //爆発のパーティクルが設定されたオブジェクト
     [SerializeField] private GameObject explosion;
+    private bool isexplosion = false;
 
     //吹き飛びレベルのスクリプタブルオブジェクト
     public BlowingLevel BlowingLevel;
@@ -65,13 +66,11 @@ public class RotateAroundEarth : MonoBehaviour
     {
         if (BlowingLevel.CosmicFall_flag)
         {
-            bool isexplosion = false;
-
             if (!isexplosion)
             {
                 //爆発のオブジェクトを生成
                 Instantiate(explosion, transform.position, Quaternion.identity);
-
+                //trueにして再度発生しないようにする
                 isexplosion = true;
             }
         }
