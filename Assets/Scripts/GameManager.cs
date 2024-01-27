@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IGameState
 {
-    // ƒVƒ“ƒOƒ‹ƒgƒ“•Ï”
+    // ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³å¤‰æ•°
     public static GameManager instace;
     private EGameState state = EGameState.TITLE;
     [SerializeField] private GameObject canvasManager = null;
@@ -13,14 +13,14 @@ public class GameManager : MonoBehaviour, IGameState
 
     void Awake()
     {
-        // ©g‚ğæ“¾
+        // è‡ªèº«ã‚’å–å¾—
         if (instace == null)
         {
             instace = this;
         }
-        // FPS 60‚Éİ’è
+        // FPS 60ã«è¨­å®š
         Application.targetFrameRate = 60;
-        // ‰ŠúƒXƒe[ƒg‚ğTitle‚Éİ’è
+        // åˆæœŸã‚¹ãƒ†ãƒ¼ãƒˆã‚’Titleã«è¨­å®š
         state = EGameState.TITLE;
         canvas = canvasManager.gameObject.GetComponent<ICanvas>();
     }
@@ -57,13 +57,12 @@ public class GameManager : MonoBehaviour, IGameState
                 Debug.Log("Start");
                 break;
             case EGameState.SLIDER:
-                canvas.SetActiveCanvas(true, state);
                 break;
             case EGameState.FLY:
-                canvas.SetActiveCanvas(true, state);
+
                 break;
             case EGameState.CUTIN:
-                canvas.SetActiveCanvas(true, state);
+
                 break;
             case EGameState.RESULT:
                 canvas.SetActiveCanvas(true, state);
@@ -102,7 +101,7 @@ public class GameManager : MonoBehaviour, IGameState
     private void GameQuit()
     {
         // https://fall-and-fall.hatenablog.com/entry/unity/quit-game
-        // ã‹LURLQÆ
+        // ä¸Šè¨˜URLå‚ç…§
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
