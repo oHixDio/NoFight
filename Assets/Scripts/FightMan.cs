@@ -16,6 +16,8 @@ public class FightMan : MonoBehaviour
 
     private IGameState gameState;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip clip;
 
 
     void Start()
@@ -26,9 +28,10 @@ public class FightMan : MonoBehaviour
 
     void Update()
     {
-        if (gameState.GetCurrentGameState() == EGameState.FLY)
+        if (gameState.GetCurrentGameState() == EGameState.FLY && !isMove)
         {
             isMove = true;
+            audioSource.PlayOneShot(clip);
         }
     }
 
@@ -47,4 +50,6 @@ public class FightMan : MonoBehaviour
         gameState.ChangeGameState(EGameState.CUTIN);
         GetComponentInChildren<Camera>().enabled = true;
     }
+
+    
 }

@@ -129,7 +129,6 @@ public class RotateAroundEarth : MonoBehaviour
 
                 //人を非表示にする
                 gameObject.SetActive(false);
-
                 //trueにして再度発生しないようにする
                 isexplosion = true;
 
@@ -148,4 +147,5 @@ public class RotateAroundEarth : MonoBehaviour
         //audioをループ設定がtrueの時falseにする
         if (audioSource.loop == true) audioSource.loop = false;
     }
+
 }

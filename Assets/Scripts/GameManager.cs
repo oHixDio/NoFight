@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour, IGameState
     [SerializeField] private BlowingLevel blowingLevel;
 
     public float Result;
+    [SerializeField] private AudioSource seManager;
+    [SerializeField] private AudioClip wind;
 
     void Awake()
     {
@@ -124,22 +126,23 @@ public class GameManager : MonoBehaviour, IGameState
 
     private void GameQuit()
     {
-        // https://fall-and-fall.hatenablog.com/entry/unity/quit-game
-        // 上記URL参照
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-      Application.Quit();
-#endif
+        Application.Quit();
+#endif 
     }
 
     public void CutInMode()
     {
         mainCam.SetActive(false);
+        seManager.PlayOneShot(wind);
+
     }
 
     public void CosmicShiftMode()
     {
         blowingLevel.isCosmicShift = true;
+
     }
 }
