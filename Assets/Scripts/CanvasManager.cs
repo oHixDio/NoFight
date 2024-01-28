@@ -26,6 +26,8 @@ public class CanvasManager : MonoBehaviour, ICanvas
                 break;
             case EGameState.CUTIN:
                 break;
+            case EGameState.COSMIC:
+                break;
             case EGameState.RESULT:
                 resultCanvas.gameObject.SetActive(active);
                 break;
