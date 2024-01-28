@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour, IGameState
         switch (curState)
         {
             case EGameState.TITLE:
-                canvas.SetActiveCanvas(false, state);
+                canvas.SetActiveCanvas(true, state);
                 break;
             case EGameState.START:
                 break;
