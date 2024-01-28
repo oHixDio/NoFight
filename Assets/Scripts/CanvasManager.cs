@@ -26,6 +26,8 @@ public class CanvasManager : MonoBehaviour, ICanvas
                 break;
             case EGameState.CUTIN:
                 break;
+            case EGameState.COSMIC:
+                break;
             case EGameState.RESULT:
                 resultCanvas.gameObject.SetActive(active);
                 break;
@@ -34,5 +36,15 @@ public class CanvasManager : MonoBehaviour, ICanvas
         }
     }
 
-   
+   public void FadeIn()
+    {
+        Fade fade = fadeCanvas.GetComponentInChildren<Fade>();
+        fade.FadeIn();
+    }
+
+    public void FadeOut()
+    {
+        Fade fade = fadeCanvas.GetComponentInChildren<Fade>();
+        fade.FadeOut();
+    }
 }
