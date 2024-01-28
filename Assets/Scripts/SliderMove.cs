@@ -9,6 +9,8 @@ public class Slidermove : MonoBehaviour
     [SerializeField] float BarSpeed = 1f;
     [SerializeField] Slider Slider;
     [SerializeField] private float nextStateTime = 5f;
+    public AudioClip sound1;
+    AudioSource audioSource;
 
     public float FlyingDistance;
     private bool isClicked;
@@ -17,6 +19,7 @@ public class Slidermove : MonoBehaviour
     void Start()
     {
         gameState = GameManager.instace.GetComponent<IGameState>();
+        audioSource = GetComponent<AudioSource>();
         Slider.value = 0;
         isClicked = false;
     }
@@ -24,6 +27,11 @@ public class Slidermove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            audioSource.PlayOneShot(sound1);
+        }
         //一度クリックしたらここの処理は使わないからリターンする
         if (isClicked)
         {
@@ -47,7 +55,7 @@ public class Slidermove : MonoBehaviour
         //ステートの変更をしています
         isClicked = true;
         Invoke("callState", nextStateTime);
-
+        audioSource.PlayOneShot(sound1);
 
         //リザルトの値をここで決めています
         if (Slider.value >= 4.5 && Slider.value <= 5.5)

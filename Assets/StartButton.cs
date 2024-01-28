@@ -21,7 +21,6 @@ public class StartButton : MonoBehaviour
 
     public void GameStart()
     {
-        Invoke("callState", nextstateTime);
         //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚ÉSE‚ğÄ¶
         audioSource.PlayOneShot(SE);
 

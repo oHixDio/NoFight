@@ -14,6 +14,8 @@ public class ShakeHands : MonoBehaviour
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private GameObject subCamera;
 
+    [SerializeField] private GameObject resultCanvas;
+
     //エフェクトを内包するオブジェクト
     [SerializeField] private GameObject backgroundEffects;
 
@@ -26,11 +28,14 @@ public class ShakeHands : MonoBehaviour
     //計測時間
     private float elapsedTime;
 
+    private bool updateEnabled = true;
+
     private void Start()
     {
         //フラグの初期化
         BlowingLevel.isCosmicShift = false;
         BlowingLevel.CosmicFall_flag = false;
+        resultCanvas.gameObject.SetActive(false);
     }
 
     void Update()
@@ -54,7 +59,7 @@ public class ShakeHands : MonoBehaviour
             elapsedTime += Time.deltaTime;
 
             //計測時間が待機時間を超えたら場面遷移
-            if(elapsedTime > waitTime)
+            if(elapsedTime > waitTime && updateEnabled)
             {
                 //SEの音量設定を元に戻す
                 audioSource.volume = 1.0f;
@@ -62,6 +67,9 @@ public class ShakeHands : MonoBehaviour
                 //Debug.Log("場面遷移！！！");
                 IGameState gameState = GameManager.instace.GetComponent<IGameState>();
                 gameState.ChangeGameState(EGameState.RESULT);
+                resultCanvas.SetActive(true);
+                Debug.Log("Result UI");
+                updateEnabled = false;
             }
         }
     }
