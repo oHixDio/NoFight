@@ -36,5 +36,15 @@ public class CanvasManager : MonoBehaviour, ICanvas
         }
     }
 
-   
+   public void FadeIn()
+    {
+        Fade fade = fadeCanvas.GetComponentInChildren<Fade>();
+        fade.FadeIn();
+    }
+
+    public void FadeOut()
+    {
+        Fade fade = fadeCanvas.GetComponentInChildren<Fade>();
+        fade.FadeOut();
+    }
 }

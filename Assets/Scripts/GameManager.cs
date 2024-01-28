@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour, IGameState
 
     [SerializeField] private GameObject mainCam = null;
 
-    public GameObject cosmicViewScene;
+    [SerializeField] private GameObject cosmicViewScene;
+    [SerializeField] private GameObject cosmicBeforeScene;
 
     void Awake()
     {
@@ -71,6 +72,8 @@ public class GameManager : MonoBehaviour, IGameState
             case EGameState.COSMIC:
                 Debug.Log("Cosmic");
                 cosmicViewScene.SetActive(true);
+                cosmicBeforeScene.SetActive(false);
+                canvas.FadeIn();
                 break;
             case EGameState.RESULT:
                 canvas.SetActiveCanvas(true, state);
