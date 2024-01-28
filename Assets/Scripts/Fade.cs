@@ -17,7 +17,7 @@ public class Fade : MonoBehaviour
 
         // 色を変えるゲームオブジェクトからImageコンポーネントを取得
         Image fade = GetComponent<Image>();
-
+        fade.enabled = true;
         // フェード元の色を設定（黒）★変更可
         fade.color = color;
 
@@ -50,17 +50,18 @@ public class Fade : MonoBehaviour
 
     IEnumerator Color_FadeOut()
     {
+        
         // 画面をフェードインさせるコールチン
         // 前提：画面を覆うPanelにアタッチしている
 
         // 色を変えるゲームオブジェクトからImageコンポーネントを取得
         Image fade = GetComponent<Image>();
-
+        fade.enabled = true;
         // フェード元の色を設定（黒）★変更可
         fade.color = color;
 
         // フェードインにかかる時間（秒）★変更可
-        float fade_time = fadeTime;
+        float fade_time = fadeTime / 2;
 
         // ループ回数（0はエラー）★変更可
         int loop_count = loopCnt;
@@ -83,7 +84,7 @@ public class Fade : MonoBehaviour
             new_color.a = alpha / 255.0f;
             fade.color = new_color;
         }
-        // fade.enabled = false;
+        fade.color = color;
     }
 
     public void FadeIn()

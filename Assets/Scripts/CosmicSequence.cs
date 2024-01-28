@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CosmicSequence : MonoBehaviour
 {
+    [SerializeField] private Fade fade;
     private IGameState gameState;
     private void Start()
     {
@@ -14,7 +15,13 @@ public class CosmicSequence : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            gameState.ChangeGameState(EGameState.COSMIC);
+            fade.FadeOut();
+            Invoke("ChangeState", 3f);
         }
+    }
+
+    private void ChangeState()
+    {
+        gameState.ChangeGameState(EGameState.COSMIC);
     }
 }
