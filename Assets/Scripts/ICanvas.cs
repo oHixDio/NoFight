@@ -9,4 +9,6 @@ public interface ICanvas
     public void FadeIn();
 
     public void FadeOut();
+
+    public Fade GetFade();
 }
