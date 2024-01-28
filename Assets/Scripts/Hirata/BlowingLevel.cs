@@ -16,4 +16,14 @@ public class BlowingLevel : ScriptableObject
     //ƒtƒ‰ƒO
     public bool isCosmicShift = false;
     public bool CosmicFall_flag = false;
+
+    public void CosmicShift()
+    {
+        isCosmicShift = true;
+    }
+
+    public void CosmicFall()
+    {
+        CosmicFall_flag = false;
+    }
 }

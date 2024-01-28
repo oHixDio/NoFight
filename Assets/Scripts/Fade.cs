@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class Fade : MonoBehaviour
 {
     [SerializeField] private Color color = new Color(0, 0, 0);
-    [SerializeField] private float fadeTime = 3.0f;
+    [SerializeField] private float fadeTime = 1.0f;
+    public float FadeTime { get { return fadeTime; } }
     [SerializeField] private int loopCnt = 20;
 
     IEnumerator Color_FadeIn()
@@ -96,4 +97,5 @@ public class Fade : MonoBehaviour
     {
         StartCoroutine("Color_FadeOut");
     }
+
 }
