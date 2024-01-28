@@ -5,22 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IGameState
 {
-    // ƒVƒ“ƒOƒ‹ƒgƒ“•Ï”
+    // ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³å¤‰æ•°
     public static GameManager instace;
     private EGameState state = EGameState.TITLE;
     [SerializeField] private GameObject canvasManager = null;
     private ICanvas canvas = null;
 
+    [SerializeField] private GameObject mainCam = null;
+
+    [SerializeField] private GameObject cosmicViewScene;
+    [SerializeField] private GameObject cosmicBeforeScene;
+
+    [SerializeField] private BlowingLevel blowingLevel;
+
+    public float Result;
+    [SerializeField] private AudioSource seManager;
+    [SerializeField] private AudioClip wind;
+
     void Awake()
     {
-        // ©g‚ğæ“¾
+        // è‡ªèº«ã‚’å–å¾—
         if (instace == null)
         {
             instace = this;
         }
-        // FPS 60‚Éİ’è
+        // FPS 60ã«è¨­å®š
         Application.targetFrameRate = 60;
-        // ‰ŠúƒXƒe[ƒg‚ğTitle‚Éİ’è
+        // åˆæœŸã‚¹ãƒ†ãƒ¼ãƒˆã‚’Titleã«è¨­å®š
         state = EGameState.TITLE;
         canvas = canvasManager.gameObject.GetComponent<ICanvas>();
     }
@@ -56,8 +67,23 @@ public class GameManager : MonoBehaviour, IGameState
             case EGameState.START:
                 Debug.Log("Start");
                 break;
-            case EGameState.RESULT:
+            case EGameState.SLIDER:
                 canvas.SetActiveCanvas(true, state);
+                break;
+            case EGameState.FLY:
+                break;
+            case EGameState.CUTIN:
+                CutInMode();
+                break;
+            case EGameState.COSMIC:
+                Debug.Log("Cosmic");
+                cosmicViewScene.SetActive(true);
+                cosmicBeforeScene.SetActive(false);
+                canvas.FadeIn();
+                Invoke("CosmicShiftMode", canvas.GetFade().FadeTime);
+                break;
+            case EGameState.RESULT:
+                // canvas.SetActiveCanvas(true, state);
                 break;
             case EGameState.END:
                 GameQuit();
@@ -77,8 +103,16 @@ public class GameManager : MonoBehaviour, IGameState
                 break;
             case EGameState.START:
                 break;
-            case EGameState.RESULT:
+            case EGameState.SLIDER:
                 canvas.SetActiveCanvas(false, state);
+                break;
+            case EGameState.FLY:
+               
+                break;
+            case EGameState.CUTIN:
+               
+                break;
+            case EGameState.RESULT:
                 break;
             case EGameState.END:
                 break;
@@ -92,12 +126,23 @@ public class GameManager : MonoBehaviour, IGameState
 
     private void GameQuit()
     {
-        // https://fall-and-fall.hatenablog.com/entry/unity/quit-game
-        // ã‹LURLQÆ
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-      Application.Quit();
-#endif
+        Application.Quit();
+#endif 
+    }
+
+    public void CutInMode()
+    {
+        mainCam.SetActive(false);
+        seManager.PlayOneShot(wind);
+
+    }
+
+    public void CosmicShiftMode()
+    {
+        blowingLevel.isCosmicShift = true;
+
     }
 }
