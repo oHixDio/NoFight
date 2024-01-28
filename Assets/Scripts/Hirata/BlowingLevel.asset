@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BlowingLevel
   m_EditorClassIdentifier: 
   level: 0
-  isCosmicShift: 1
+  isCosmicShift: 0
   CosmicFall_flag: 0
