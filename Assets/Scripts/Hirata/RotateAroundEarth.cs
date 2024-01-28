@@ -7,6 +7,8 @@ public class RotateAroundEarth : MonoBehaviour
     //一定の地点まで回転するとカメラが切り替わり男たちが握手する
     //回転移動する男にアタッチする
 
+    //回転の中心となるオブジェクト
+    [SerializeField] private GameObject centerObject;
     // 中心点
     [SerializeField] private Vector3 _center = Vector3.zero;
     // 回転軸
@@ -30,6 +32,10 @@ public class RotateAroundEarth : MonoBehaviour
     //吹き飛びレベルのスクリプタブルオブジェクト
     public BlowingLevel BlowingLevel;
 
+    private void Start()
+    {
+        _center = centerObject.transform.position;
+    }
     private void Update()
     {
         //他のスクリプトからフラグをtrueにすると動作
