@@ -812,6 +812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FightMan
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 70c91b32d678df84ab52c81d701a0805, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1743,6 +1747,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 70c91b32d678df84ab52c81d701a0805, type: 3}
       propertyPath: m_Name
       value: Hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 70c91b32d678df84ab52c81d701a0805, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3563,6 +3571,10 @@ PrefabInstance:
       value: FightMan (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 70c91b32d678df84ab52c81d701a0805, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 70c91b32d678df84ab52c81d701a0805, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -4180,7 +4192,7 @@ PrefabInstance:
     - target: {fileID: 4239976199957176723, guid: 5fde44b359ae5294e8355b26ed78473b, type: 3}
       propertyPath: skyBoxes.Array.data[1]
       value: 
-      objectReference: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 369b9ebe3a62b904dbc19bd332b44086, type: 2}
     - target: {fileID: 6613113428981886181, guid: 5fde44b359ae5294e8355b26ed78473b, type: 3}
       propertyPath: audioSource
       value: 
@@ -4228,6 +4240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b98e1858465bb34685efe6600d2560b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fade: {fileID: 0}
 --- !u!65 &2085972723
 BoxCollider:
   m_ObjectHideFlags: 0
