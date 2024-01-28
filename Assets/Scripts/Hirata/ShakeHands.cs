@@ -14,6 +14,8 @@ public class ShakeHands : MonoBehaviour
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private GameObject subCamera;
 
+    [SerializeField] private GameObject resultCanvas;
+
     //エフェクトを内包するオブジェクト
     [SerializeField] private GameObject backgroundEffects;
 
@@ -31,6 +33,7 @@ public class ShakeHands : MonoBehaviour
         //フラグの初期化
         BlowingLevel.isCosmicShift = false;
         BlowingLevel.CosmicFall_flag = false;
+        resultCanvas.gameObject.SetActive(false);
     }
 
     void Update()
@@ -41,6 +44,7 @@ public class ShakeHands : MonoBehaviour
             //カメラ切り替え
             mainCamera.gameObject.SetActive(false);
             subCamera.gameObject.SetActive(true);
+            Invoke("ShowResult", 3f);
 
             //エフェクトの発生
             backgroundEffects.gameObject.SetActive(true);
@@ -64,5 +68,10 @@ public class ShakeHands : MonoBehaviour
                 gameState.ChangeGameState(EGameState.RESULT);
             }
         }
+    }
+    
+    private void ShowResult()
+    {
+        resultCanvas.gameObject.SetActive(true);
     }
 }

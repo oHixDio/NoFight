@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour, IGameState
     [SerializeField] private GameObject cosmicViewScene;
     [SerializeField] private GameObject cosmicBeforeScene;
 
+    [SerializeField] private BlowingLevel blowingLevel;
+
     void Awake()
     {
         // 自身を取得
@@ -74,6 +76,7 @@ public class GameManager : MonoBehaviour, IGameState
                 cosmicViewScene.SetActive(true);
                 cosmicBeforeScene.SetActive(false);
                 canvas.FadeIn();
+                Invoke("CosmicShiftMode", canvas.GetFade().FadeTime);
                 break;
             case EGameState.RESULT:
                 canvas.SetActiveCanvas(true, state);
@@ -92,7 +95,7 @@ public class GameManager : MonoBehaviour, IGameState
         switch (curState)
         {
             case EGameState.TITLE:
-                canvas.SetActiveCanvas(true, state);
+                canvas.SetActiveCanvas(false, state);
                 break;
             case EGameState.START:
                 break;
@@ -132,5 +135,10 @@ public class GameManager : MonoBehaviour, IGameState
     public void CutInMode()
     {
         mainCam.SetActive(false);
+    }
+
+    public void CosmicShiftMode()
+    {
+        blowingLevel.isCosmicShift = true;
     }
 }
