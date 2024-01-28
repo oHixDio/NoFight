@@ -28,6 +28,8 @@ public class ShakeHands : MonoBehaviour
     //計測時間
     private float elapsedTime;
 
+    private bool updateEnabled = true;
+
     private void Start()
     {
         //フラグの初期化
@@ -44,7 +46,6 @@ public class ShakeHands : MonoBehaviour
             //カメラ切り替え
             mainCamera.gameObject.SetActive(false);
             subCamera.gameObject.SetActive(true);
-            Invoke("ShowResult", 3f);
 
             //エフェクトの発生
             backgroundEffects.gameObject.SetActive(true);
@@ -58,7 +59,7 @@ public class ShakeHands : MonoBehaviour
             elapsedTime += Time.deltaTime;
 
             //計測時間が待機時間を超えたら場面遷移
-            if(elapsedTime > waitTime)
+            if(elapsedTime > waitTime && updateEnabled)
             {
                 //SEの音量設定を元に戻す
                 audioSource.volume = 1.0f;
@@ -66,12 +67,10 @@ public class ShakeHands : MonoBehaviour
                 //Debug.Log("場面遷移！！！");
                 IGameState gameState = GameManager.instace.GetComponent<IGameState>();
                 gameState.ChangeGameState(EGameState.RESULT);
+                resultCanvas.SetActive(true);
+                Debug.Log("Result UI");
+                updateEnabled = false;
             }
         }
-    }
-    
-    private void ShowResult()
-    {
-        resultCanvas.gameObject.SetActive(true);
     }
 }

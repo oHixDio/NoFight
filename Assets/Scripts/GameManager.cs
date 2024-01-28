@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour, IGameState
                 Invoke("CosmicShiftMode", canvas.GetFade().FadeTime);
                 break;
             case EGameState.RESULT:
-                canvas.SetActiveCanvas(true, state);
+                // canvas.SetActiveCanvas(true, state);
                 break;
             case EGameState.END:
                 GameQuit();
@@ -109,7 +109,6 @@ public class GameManager : MonoBehaviour, IGameState
                
                 break;
             case EGameState.RESULT:
-                canvas.SetActiveCanvas(false, state);
                 break;
             case EGameState.END:
                 break;
