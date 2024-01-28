@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class Fade : MonoBehaviour
 {
+    [SerializeField] private Color color = new Color(0, 0, 0);
+    [SerializeField] private float fadeTime = 3.0f;
+    [SerializeField] private int loopCnt = 20;
+
     IEnumerator Color_FadeIn()
     {
         // 画面をフェードインさせるコールチン
@@ -15,13 +19,14 @@ public class Fade : MonoBehaviour
         Image fade = GetComponent<Image>();
 
         // フェード元の色を設定（黒）★変更可
-        fade.color = new Color((0.0f / 255.0f), (0.0f / 255.0f), (0.0f / 0.0f), (255.0f / 255.0f));
+        fade.color = color;
 
         // フェードインにかかる時間（秒）★変更可
-        const float fade_time = 2.0f;
+        float fade_time = fadeTime;
 
         // ループ回数（0はエラー）★変更可
-        const int loop_count = 10;
+        int loop_count = loopCnt;
+        if (loop_count == 0) {  loop_count = 1; }
 
         // ウェイト時間算出
         float wait_time = fade_time / loop_count;
@@ -40,6 +45,7 @@ public class Fade : MonoBehaviour
             new_color.a = alpha / 255.0f;
             fade.color = new_color;
         }
+        fade.enabled = false;
     }
 
     public void FadeIn()
