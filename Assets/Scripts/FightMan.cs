@@ -47,4 +47,9 @@ public class FightMan : MonoBehaviour
         gameState.ChangeGameState(EGameState.CUTIN);
         GetComponentInChildren<Camera>().enabled = true;
     }
+
+    void OnCollisionStay(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+    }
 }
