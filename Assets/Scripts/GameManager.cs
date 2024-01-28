@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour, IGameState
 
     [SerializeField] private BlowingLevel blowingLevel;
 
+    public float Result;
+
     void Awake()
     {
         // 自身を取得

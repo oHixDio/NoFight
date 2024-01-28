@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RotateAroundEarth : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class RotateAroundEarth : MonoBehaviour
     [SerializeField] private Vector3 _axis = Vector3.forward;
     // ‰~‰^“®ŽüŠú
     [SerializeField] private float _period = 6;
+
+    [SerializeField] private GameObject resultCanvas;
+    [SerializeField] private GameObject resultText1;
+    [SerializeField] private GameObject resultText2;
 
     //‰ñ“]‚Ì’âŽ~‚·‚é’n“_
     private float stopRotatePos_Max = -5.4f;
@@ -96,6 +101,15 @@ public class RotateAroundEarth : MonoBehaviour
             }
         }
 
+        float result = GameManager.instace.Result;
+        if (result < 10)
+        {
+            BlowingLevel.level = BlowingLevel.Level.Good;
+        }
+        else
+        {
+            BlowingLevel.level = BlowingLevel.Level.Great;
+        }
         //”š”­‚·‚é‚©Šm”F
         explosionCosmic();
     }
@@ -121,7 +135,9 @@ public class RotateAroundEarth : MonoBehaviour
 
 
                 //”•bŒãŽŸ‚Ìê–Ê‚ÉØ‚è‘Ö‚¦‚é
-
+                resultCanvas.SetActive(true);
+                resultText1.SetActive(false);
+                resultText2.SetActive(true);
             }
         }
     }

@@ -61,17 +61,20 @@ public class Slidermove : MonoBehaviour
         if (Slider.value >= 4.5 && Slider.value <= 5.5)
         {
             FlyingDistance = 10;
+            GameManager.instace.Result = FlyingDistance;
         }
 
         else if (Slider.value >= 2.0 && Slider.value <= 4.5 || Slider.value >= 5.5 && Slider.value <= 8.0)
         {
             FlyingDistance = 5;
+            GameManager.instace.Result = FlyingDistance;
         }
 
         else if (Slider.value >= 0.0 && Slider.value <= 2.0 || Slider.value >= 8.0 && Slider.value <= 10.0)
 
         {
             FlyingDistance = 1;
+            GameManager.instace.Result = FlyingDistance;
         };
 
     }
